@@ -1,0 +1,28 @@
+================================================================================
+Bob Marley
+bob@email.com
+
+EDUCATION
+English
+Montgomery College' 1984
+
+Mathematics
+School of Hard Knocks' 1567
+
+EXPERIENCE
+Clerk
+Petco' June 1865 - December 2018
+Job Responsibility 1, Walk the dogs
+Job Responsibility 2, Polish the cats
+
+Clerk
+Target' April 1865 - May 2018
+Job Responsibility 1, Scan the purchases
+Job Responsibility 2, Stock shelves
+
+SKILLS
+Java, Novice
+Eating, Expert
+Washing Dishes, Intermediate
+
+
