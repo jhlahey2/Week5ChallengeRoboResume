@@ -6,28 +6,66 @@ import java.io.*;
  */
 public class FileHandler {
 
-    private static final String fileName = "Resume.txt";
+    private static String fileName = "Resume.txt";
 
     private static FileWriter fileWriter = null;
     private static BufferedWriter bufferedWriter = null;
     private static FileReader fileReader = null;
     private static BufferedReader bufferedReader = null;
+    private static boolean bAppend = false;
 
 
     //*************************************************************************
-    //* default constructor
+    //* Constructors
     //*************************************************************************
+
+    /**
+     * Default constructor opens file
+     */
     public FileHandler() {
 
         openFile();
     }
 
+    /**
+     * Overloaded constructor takes a file name as a string and opens that file
+     *
+     * @param newFileName   name of file to open
+     */
+    public FileHandler(String newFileName ) {
+
+        fileName = newFileName;
+        openFile();
+    }
+
+
+    /**
+     * Overloaded constructor takes a file name as a string and opens that file
+     * also takes a boolean to determine whether to append if exists
+     * or to the file
+     * @param newFileName   name of file to open
+     * @param append        if file exists, append if true, truncate if false
+     */
+    public FileHandler(String newFileName, boolean append) {
+
+        fileName = newFileName;
+        bAppend = append;
+        openFile();
+    }
+
+
     //*************************************************************************
-    //* open file & truncate if exists (do not append)
+    //* other methods
     //*************************************************************************
+
+    /**
+     * Open file
+     *
+     * if file exists && append is true, appends to the file
+     * if file exists && append is false, truncates the file
+     */
     private void openFile() {
 
-        boolean bAppend = false;
 
         try {
             // Assume default encoding.
@@ -46,36 +84,39 @@ public class FileHandler {
 
             System.out.println("Error opening file '" + fileName + "'");
             e.printStackTrace();
-            ;
         }
 
     }//end private void openFile()
 
-    //*************************************************************************
-    //* write to file
-    //*************************************************************************
-    public void writeToFile(String sResumeOut) {
+
+    /**
+     * Write to file
+     *
+     * @param sOutputString data to write to file
+     */
+    public void writeToFile(String sOutputString) {
 
         try {
 
-            bufferedWriter.write(sResumeOut);
+            bufferedWriter.write(sOutputString);
             bufferedWriter.newLine();
             bufferedWriter.flush();
+
         } catch (IOException e) {
 
             System.out.println("Error writing to file '" + fileName + "'");
             e.printStackTrace();
         }
+
     }//end public void writeToFile(String sElizaOut)
 
 
-    //*************************************************************************
-    //*
-    //*************************************************************************
-    public void writeResume() {
-        String sOutput = "";
+    /**
+     * Write to file
+     */
+    public void writeToFile() {
 
-        System.out.println("\n\tLOG REPORT\n");
+        String sOutput = "";
 
         try {
             while ((sOutput = bufferedReader.readLine()) != null) {
@@ -91,9 +132,10 @@ public class FileHandler {
 
     }//end public String readFile()
 
-    //*************************************************************************
-    //*close file
-    //*************************************************************************
+
+    /**
+     * Close file
+     */
     public void closeFile() {
 
         try {
@@ -106,6 +148,7 @@ public class FileHandler {
             e.printStackTrace();
         }
 
-    }//end public void closeFile(
+    }//end public void closeFile()
+
 
 }//end public class FileHandler
